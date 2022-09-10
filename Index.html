@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Index.css" />
+  </head>
+
+  <body>
+    <main>
+      <h1>Library</h1>
+      <button class="new_book">Add New Book</button>
+      <form class="hide" action="">
+        <div class="input-couple">
+          <label for="book_title">Book's Title</label>
+          <input
+            type="text"
+            id="book_title"
+            name="book_title"
+            required="required"
+          />
+        </div>
+        <div class="input-couple">
+          <label for="book_author">Book's Author</label>
+          <input
+            type="text"
+            id="book_author"
+            name="book_author"
+            required="required"
+          />
+        </div>
+        <div class="input-couple">
+          <label for="number_of_pages">Number of Pages</label>
+          <input type="text" id="number_of_pages" name="number_of_pages" />
+        </div>
+        <fieldset>
+          <legend>Have you read it?</legend>
+          <label for="have_read_yes">yes</label>
+          <input
+            type="radio"
+            required
+            id="have_read_yes"
+            name="have_read"
+            value="yes"
+          />
+          <label for="have_read_no">no</label>
+          <input type="radio" id="have_read_no" name="have_read" value="no" />
+        </fieldset>
+        <button class="submit_button">Submit</button>
+      </form>
+      <footer></footer>
+    </main>
+
+    <script src="Index.js"></script>
+  </body>
+</html>
