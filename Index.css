@@ -58,11 +58,10 @@ fieldset {
     padding: 20px;
     display: grid;
     grid-auto-flow: column;
-    justify-content: start;
-    align-items: flex-start;
-    overflow-y: scroll;
+    align-content: center;
+    overflow-x: scroll;
     scroll-behavior: smooth;
-    height: 600px;
+    min-height: 350px;
     gap:30px;
     width: 80%;
     background-color: azure;
@@ -70,7 +69,9 @@ fieldset {
 }
 
 .book_div{
-    min-height: min-content;
+    font-size:1.2rem;
+    line-height: 30px;
+    min-height: 300px;
     width: 300px;
     word-wrap: break-word;
     hyphens: auto;
