@@ -53,3 +53,28 @@ fieldset {
 .hide {
     display: none;
 }
+
+.library{
+    padding: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: flex-start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 600px;
+    gap:30px;
+    width: 80%;
+    background-color: azure;
+    
+}
+
+.book_div{
+    min-height: min-content;
+    width: 300px;
+    word-wrap: break-word;
+    hyphens: auto;
+    background:linear-gradient(175deg, white, grey);
+    border-radius: 15px;
+    padding: 20px;
+}
