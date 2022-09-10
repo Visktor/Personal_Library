@@ -61,9 +61,10 @@ fieldset {
     align-content: center;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    min-height: 350px;
+    height: clamp(min-content, 400px, 50%);
     gap:30px;
     width: 80%;
+    min-width: 340px;
     background-color: azure;
     
 }
@@ -78,4 +79,8 @@ fieldset {
     background:linear-gradient(175deg, white, grey);
     border-radius: 15px;
     padding: 20px;
+}
+
+.book_div .div4{
+    color:white;
 }

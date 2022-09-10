@@ -25,6 +25,7 @@ submit.addEventListener("click", (e) => {
   myLibrary.push(new Book(bTitle.value, bAuthor.value, bPages.value, myRadio));
   e.preventDefault();
   currentBookIndex += 1;
+  let theObjIndex = currentBookIndex;
   let nDiv = document.createElement("div");
   nDiv.classList.add("book_div");
   libUI.appendChild(nDiv);
@@ -42,7 +43,22 @@ submit.addEventListener("click", (e) => {
         nnDiv.textContent = `Number of Pages: ${myLibrary[currentBookIndex].pages}`;
         break;
       case 4:
+        nnDiv.addEventListener("click", () => {
+          myLibrary[theObjIndex].changeStatus();
+          if (myLibrary[theObjIndex].opt) {
+            nnDiv.style.backgroundColor = "green";
+          } else {
+            nnDiv.style.backgroundColor = "red";
+          }
+          nnDiv.textContent = myLibrary[theObjIndex].haveread;
+        });
+
         nnDiv.textContent = myLibrary[currentBookIndex].haveread;
+        if (myLibrary[theObjIndex].opt) {
+          nnDiv.style.backgroundColor = "green";
+        } else {
+          nnDiv.style.backgroundColor = "red";
+        }
         break;
     }
     nDiv.appendChild(nnDiv);
@@ -53,7 +69,21 @@ function Book(title, author, pages, haveread) {
   (this.title = title), (this.author = author), (this.pages = pages);
   if (haveread === "yes") {
     this.haveread = "Already read";
+    this.opt = true;
   } else {
     this.haveread = "Haven't read yet";
+    this.opt = false;
   }
 }
+
+Book.prototype.changeStatus = function () {
+  if (this.haveread) {
+    if (this.opt) {
+      this.haveread = "Haven't read yet";
+      this.opt = false;
+    } else if (!this.opt) {
+      this.haveread = "Already read";
+      this.opt = true;
+    }
+  }
+};
