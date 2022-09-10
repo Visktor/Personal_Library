@@ -1,14 +1,14 @@
-*{
-    padding:0;
-    margin:0;
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: grey;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@ main{
     gap: 20px;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,28 +25,31 @@ form{
     padding: 20px;
 }
 
-form div{
+form div {
     display: flex;
     flex-direction: column;
     width: 300px;
 }
 
-fieldset{
+fieldset {
     width: 300px;
     padding: 30px;
 }
 
-.new_book{
+.new_book,
+.show_list {
     width: 160px;
-    height: 40px;
     background-color: darkred;
     border: none;
     border-radius: 5px;
     font-size: 1.1rem;
     font-weight: bold;
     color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    height: min-content;
 }
 
-.hide{
-    display:none;
+.hide {
+    display: none;
 }

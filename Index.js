@@ -5,8 +5,10 @@ const bTitle = document.querySelector("#book_title");
 const bAuthor = document.querySelector("#book_author");
 const bPages = document.querySelector("#number_of_pages");
 const rButtons = document.querySelectorAll("[type=radio]");
+const libUI = document.querySelector(".library")
 
 let myLibrary = [];
+let currentBookIndex = -1;
 
 newBook.addEventListener("click", () => {
   myForm.classList.remove("hide");
@@ -22,6 +24,8 @@ submit.addEventListener("click", (e) => {
   });
   myLibrary.push(new Book(bTitle.value, bAuthor.value, bPages.value, myRadio));
   e.preventDefault();
+  currentBookIndex += 1;
+  
 });
 
 function Book(title, author, pages, haveread) {
@@ -32,3 +36,4 @@ function Book(title, author, pages, haveread) {
     this.haveread = "Haven't read yet";
   }
 }
+
