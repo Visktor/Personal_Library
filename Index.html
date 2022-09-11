@@ -12,12 +12,9 @@
     <main>
       <h1>Library</h1>
 
-      <button class="new_book">Add New Book</button>
-      <button class="show_list">Show Registered Books</button>
-
       <form class="hide" action="">
         <div class="input-couple">
-          <label for="book_title">Book's Title</label>
+          <label for="book_title">Book's Title:</label>
           <input
             type="text"
             id="book_title"
@@ -26,9 +23,8 @@
             maxlength="70"
           />
         </div>
-
         <div class="input-couple">
-          <label for="book_author">Book's Author</label>
+          <label for="book_author">Book's Author:</label>
           <input
             type="text"
             id="book_author"
@@ -37,9 +33,8 @@
             maxlength="40"
           />
         </div>
-
         <div class="input-couple">
-          <label for="number_of_pages">Number of Pages</label>
+          <label for="number_of_pages">Number of Pages:</label>
           <input
             type="number"
             maxlength="4"
@@ -47,7 +42,6 @@
             name="number_of_pages"
           />
         </div>
-
         <fieldset>
           <legend>Have you read it?</legend>
           <label for="have_read_yes">yes</label>
@@ -61,8 +55,7 @@
           <label for="have_read_no">no</label>
           <input type="radio" id="have_read_no" name="have_read" value="no" />
         </fieldset>
-
-        <button class="submit_button">Submit</button>
+        <button class="new_book submit_button">Add Book</button>
       </form>
 
       <div class="library"></div>

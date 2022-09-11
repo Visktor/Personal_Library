@@ -1,11 +1,19 @@
+:root {
+    --DARK-RED: #af293c;
+    --PINK: #ffa8ad;
+    --LIGHT-BLUE: #00c8ef;
+    --BEIGE: #f3eed9;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color:var(--DARK-RED)
 }
 
 body {
-    background-color: grey;
+    background-color: var(--BEIGE);
 }
 
 main {
@@ -20,9 +28,15 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--PINK);
+    border-radius: 5%;
     gap: 20px;
-    width: 50vw;
+    width: min-content;
     padding: 20px;
+}
+
+form *{
+    color: black;
 }
 
 form div {
@@ -31,15 +45,35 @@ form div {
     width: 300px;
 }
 
+input {
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
 fieldset {
+    display: flex;
+    gap: 10px;
     width: 300px;
     padding: 30px;
+    border-color: var(--DARK-RED);
+}
+
+fieldset input {
+    display: inline;
+    height: 1rem;
+}
+
+.input-couple {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .new_book,
 .show_list {
     width: 160px;
-    background-color: darkred;
+    background-color: var(--DARK-RED);
     border: none;
     border-radius: 5px;
     font-size: 1.1rem;
@@ -48,10 +82,6 @@ fieldset {
     padding: 10px;
     box-sizing: border-box;
     height: min-content;
-}
-
-.hide {
-    display: none;
 }
 
 .library {
@@ -65,7 +95,6 @@ fieldset {
     gap: 30px;
     width: 80%;
     min-width: 340px;
-    background-color: azure;
 
 }
 
@@ -77,7 +106,8 @@ fieldset {
     min-height: 300px;
     width: 300px;
     word-wrap: break-word;
-    background: linear-gradient(175deg, white, grey);
+    background: linear-gradient(156deg, var(--PINK) 65%, var(--LIGHT-BLUE));
+    color: var(--DARK-RED);
     border-radius: 15px;
     padding: 20px;
 }
@@ -94,5 +124,5 @@ fieldset {
     border: none;
     color: white;
     font-weight: bolder;
-    border-radius:50%;
+    border-radius: 50%;
 }
