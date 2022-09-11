@@ -50,10 +50,9 @@ function createDeleteButton(libItem) {
   delButton.classList.add("delete_button");
   libItem.appendChild(delButton);
   delButton.addEventListener("click", function () {
-    let ourdiv = document.querySelector(
-      `[data_libIndex="${currentBookIndex}"]`
-    );
-    ourdiv.remove();
+    myLibrary.splice(currentBookIndex, 1);
+    libItem.remove();
+    currentBookIndex -= 1;
   });
 }
 
