@@ -56,7 +56,7 @@ function createDeleteButton(libItem) {
   libItem.appendChild(delButton);
   delButton.addEventListener("click", function () {
     console.log(delButton.Obj);
-    console.log(delButton.Obj.counter())
+    console.log(delButton.Obj.counter());
     myLibrary.splice(delButton.Obj.counter(), 1);
     libItem.remove();
     currentBookIndex -= 1;
@@ -79,8 +79,8 @@ function createInfoDivs(libItem) {
         libItem_Info.textContent = `Number of Pages: ${myLibrary[currentBookIndex].pages}`;
         break;
       case 4:
+        libItem_Info.Obj = myLibrary[currentBookIndex];
         libItem_Info.addEventListener("click", changeHaveRead);
-
         libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
         if (myLibrary[currentBookIndex].opt) {
           libItem_Info.style.backgroundColor = "var(--LIGHT-BLUE)";
@@ -94,8 +94,8 @@ function createInfoDivs(libItem) {
 }
 
 function changeHaveRead() {
-  myLibrary[currentBookIndex].changeStatus();
-  if (myLibrary[currentBookIndex].opt) {
+  this.Obj.changeStatus();
+  if (this.Obj.opt) {
     this.style.backgroundColor = "var(--LIGHT-BLUE)";
   } else {
     this.style.backgroundColor = "var(--DARK-RED)";

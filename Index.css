@@ -88,6 +88,7 @@ fieldset input {
     padding: 20px;
     display: grid;
     grid-auto-flow: column;
+    justify-content: center;
     align-content: center;
     overflow-x: scroll;
     scroll-behavior: smooth;
