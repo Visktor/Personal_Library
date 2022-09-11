@@ -6,6 +6,7 @@ const bookAuthor = document.querySelector("#book_author");
 const bookPages = document.querySelector("#number_of_pages");
 const radioButtons = document.querySelectorAll("[type=radio]");
 const libUI = document.querySelector(".library");
+const allInputs = document.querySelectorAll("input");
 
 let myLibrary = [];
 let currentBookIndex = -1;
@@ -16,8 +17,10 @@ newBook.addEventListener("click", () => {
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  addToLibArray();
-  createLibDiv();
+  if (checkValid()) {
+    addToLibArray();
+    createLibDiv();
+  }
 });
 
 function createLibDiv() {
@@ -102,6 +105,7 @@ function changeHaveRead() {
   }
   this.textContent = myLibrary[currentBookIndex].haveread;
 }
+
 function Book(title, author, pages, haveread) {
   (this.title = title), (this.author = author), (this.pages = pages);
   if (haveread === "yes") {
@@ -113,6 +117,18 @@ function Book(title, author, pages, haveread) {
   }
 }
 
+function checkValid() {
+  let myValidity = true;
+  allInputs.forEach((input) => {
+    if (input.checkValidity() && myValidity === true) {
+      myValidity = true;
+    } else myValidity = false;
+    return myValidity;
+  });
+  if (myValidity === true) {
+    return true;
+  } else return false;
+}
 Book.prototype.changeStatus = function () {
   if (this.haveread) {
     if (this.opt) {
