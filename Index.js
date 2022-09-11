@@ -21,7 +21,6 @@ submit.addEventListener("click", (e) => {
 });
 
 function createLibDiv() {
-  currentBookIndex += 1;
   let libItem = document.createElement("div");
   libItem.classList.add("book_div");
   libItem.setAttribute("data_libIndex", currentBookIndex);
@@ -31,6 +30,7 @@ function createLibDiv() {
 }
 
 function addToLibArray() {
+  currentBookIndex += 1;
   myLibrary.push(
     new Book(bookTitle.value, bookAuthor.value, bookPages.value, checkRadio())
   );
@@ -47,14 +47,20 @@ function checkRadio() {
 }
 
 function createDeleteButton(libItem) {
+  console.log(currentBookIndex);
   let delButton = document.createElement("button");
+  delButton.setAttribute("data_libIndex", currentBookIndex);
+  delButton.Obj = myLibrary[currentBookIndex];
   delButton.textContent = "X";
   delButton.classList.add("delete_button");
   libItem.appendChild(delButton);
   delButton.addEventListener("click", function () {
-    myLibrary.splice(currentBookIndex, 1);
+    console.log(delButton.Obj);
+    console.log(delButton.Obj.counter())
+    myLibrary.splice(delButton.Obj.counter(), 1);
     libItem.remove();
     currentBookIndex -= 1;
+    console.log(myLibrary);
   });
 }
 
@@ -73,15 +79,7 @@ function createInfoDivs(libItem) {
         libItem_Info.textContent = `Number of Pages: ${myLibrary[currentBookIndex].pages}`;
         break;
       case 4:
-        libItem_Info.addEventListener("click", () => {
-          myLibrary[currentBookIndex].changeStatus();
-          if (myLibrary[currentBookIndex].opt) {
-            libItem_Info.style.backgroundColor = "green";
-          } else {
-            libItem_Info.style.backgroundColor = "red";
-          }
-          libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
-        });
+        libItem_Info.addEventListener("click", changeHaveRead);
 
         libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
         if (myLibrary[currentBookIndex].opt) {
@@ -95,6 +93,15 @@ function createInfoDivs(libItem) {
   }
 }
 
+function changeHaveRead() {
+  myLibrary[currentBookIndex].changeStatus();
+  if (myLibrary[currentBookIndex].opt) {
+    this.style.backgroundColor = "green";
+  } else {
+    this.style.backgroundColor = "red";
+  }
+  this.textContent = myLibrary[currentBookIndex].haveread;
+}
 function Book(title, author, pages, haveread) {
   (this.title = title), (this.author = author), (this.pages = pages);
   if (haveread === "yes") {
@@ -116,4 +123,8 @@ Book.prototype.changeStatus = function () {
       this.opt = true;
     }
   }
+};
+
+Book.prototype.counter = function () {
+  return myLibrary.indexOf(this);
 };
