@@ -83,9 +83,9 @@ function createInfoDivs(libItem) {
 
         libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
         if (myLibrary[currentBookIndex].opt) {
-          libItem_Info.style.backgroundColor = "green";
+          libItem_Info.style.backgroundColor = "var(--LIGHT-BLUE)";
         } else {
-          libItem_Info.style.backgroundColor = "red";
+          libItem_Info.style.backgroundColor = "var(--DARK-RED)";
         }
         break;
     }
@@ -96,9 +96,9 @@ function createInfoDivs(libItem) {
 function changeHaveRead() {
   myLibrary[currentBookIndex].changeStatus();
   if (myLibrary[currentBookIndex].opt) {
-    this.style.backgroundColor = "green";
+    this.style.backgroundColor = "var(--LIGHT-BLUE)";
   } else {
-    this.style.backgroundColor = "red";
+    this.style.backgroundColor = "var(--DARK-RED)";
   }
   this.textContent = myLibrary[currentBookIndex].haveread;
 }

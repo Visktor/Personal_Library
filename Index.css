@@ -91,11 +91,11 @@ fieldset input {
     align-content: center;
     overflow-x: scroll;
     scroll-behavior: smooth;
+    scrollbar-base-color: var(--LIGHT-BLUE) ;
     height: clamp(min-content, 400px, 50%);
     gap: 30px;
     width: 80%;
     min-width: 340px;
-
 }
 
 .book_div {
@@ -106,7 +106,7 @@ fieldset input {
     min-height: 300px;
     width: 300px;
     word-wrap: break-word;
-    background: linear-gradient(156deg, var(--PINK) 65%, var(--LIGHT-BLUE));
+    background: linear-gradient(156deg, var(--PINK) 65%, var(--PINK));
     color: var(--DARK-RED);
     border-radius: 15px;
     padding: 20px;
@@ -120,7 +120,7 @@ fieldset input {
     align-self: flex-end;
     width: 30px;
     height: 30px;
-    background-color: red;
+    background-color: var(--DARK-RED);
     border: none;
     color: white;
     font-weight: bolder;
