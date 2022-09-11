@@ -1,10 +1,10 @@
 const newBook = document.querySelector(".new_book");
 const myForm = document.querySelector("form");
 const submit = document.querySelector(".submit_button");
-const bTitle = document.querySelector("#book_title");
-const bAuthor = document.querySelector("#book_author");
-const bPages = document.querySelector("#number_of_pages");
-const rButtons = document.querySelectorAll("[type=radio]");
+const bookTitle = document.querySelector("#book_title");
+const bookAuthor = document.querySelector("#book_author");
+const bookPages = document.querySelector("#number_of_pages");
+const radioButtons = document.querySelectorAll("[type=radio]");
 const libUI = document.querySelector(".library");
 
 let myLibrary = [];
@@ -15,20 +15,24 @@ newBook.addEventListener("click", () => {
 });
 
 submit.addEventListener("click", (e) => {
-  let myRadio;
-  rButtons.forEach((button) => {
-    if (button.checked === true) {
-      myRadio = button.value;
-      console.log(myRadio);
-    }
-  });
-  myLibrary.push(new Book(bTitle.value, bAuthor.value, bPages.value, myRadio));
+  addToLibArray();
   e.preventDefault();
   currentBookIndex += 1;
   let theObjIndex = currentBookIndex;
   let nDiv = document.createElement("div");
   nDiv.classList.add("book_div");
+  nDiv.setAttribute("data_libIndex", currentBookIndex);
   libUI.appendChild(nDiv);
+  let nButton = document.createElement("button");
+  nButton.textContent = "X";
+  nButton.classList.add("delete_button");
+  nButton.addEventListener("click", function () {
+    let ourdiv = document.querySelector(
+      `[data_libIndex="${currentBookIndex}"]`
+    );
+    ourdiv.remove();
+  });
+  nDiv.appendChild(nButton);
   for (let i = 1; i <= 4; i++) {
     let nnDiv = document.createElement("div");
     nnDiv.classList = `div${i}`;
@@ -64,6 +68,23 @@ submit.addEventListener("click", (e) => {
     nDiv.appendChild(nnDiv);
   }
 });
+
+
+
+
+function addToLibArray() {
+  myLibrary.push(
+    new Book(bookTitle.value, bookAuthor.value, bookPages.value, checkRadio())
+  );
+}
+
+function checkRadio() {
+  radioButtons.forEach((button) => {
+    if (button.checked === true) {
+      return button.value;
+    }
+  });
+}
 
 function Book(title, author, pages, haveread) {
   (this.title = title), (this.author = author), (this.pages = pages);
