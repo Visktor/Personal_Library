@@ -37,11 +37,13 @@ function addToLibArray() {
 }
 
 function checkRadio() {
+  let bb;
   radioButtons.forEach((button) => {
     if (button.checked === true) {
-      return button.value;
+      bb = button.value;
     }
   });
+  return bb;
 }
 
 function createDeleteButton(libItem) {
