@@ -15,19 +15,19 @@ newBook.addEventListener("click", () => {
 });
 
 submit.addEventListener("click", (e) => {
+  e.preventDefault();
   addToLibArray();
   createLibDiv();
-  createDeleteButton();
-  createInfoDivs();
-  e.preventDefault();
 });
 
 function createLibDiv() {
   currentBookIndex += 1;
-  let nDiv = document.createElement("div");
-  nDiv.classList.add("book_div");
-  nDiv.setAttribute("data_libIndex", currentBookIndex);
-  libUI.appendChild(nDiv);
+  let libItem = document.createElement("div");
+  libItem.classList.add("book_div");
+  libItem.setAttribute("data_libIndex", currentBookIndex);
+  libUI.appendChild(libItem);
+  createDeleteButton(libItem);
+  createInfoDivs(libItem);
 }
 
 function addToLibArray() {
@@ -44,12 +44,12 @@ function checkRadio() {
   });
 }
 
-function createDeleteButton() {
-  let nButton = document.createElement("button");
-  nButton.textContent = "X";
-  nButton.classList.add("delete_button");
-  nDiv.appendChild(nButton);
-  nButton.addEventListener("click", function () {
+function createDeleteButton(libItem) {
+  let delButton = document.createElement("button");
+  delButton.textContent = "X";
+  delButton.classList.add("delete_button");
+  libItem.appendChild(delButton);
+  delButton.addEventListener("click", function () {
     let ourdiv = document.querySelector(
       `[data_libIndex="${currentBookIndex}"]`
     );
@@ -57,40 +57,40 @@ function createDeleteButton() {
   });
 }
 
-function createInfoDivs() {
+function createInfoDivs(libItem) {
   for (let i = 1; i <= 4; i++) {
-    let nnDiv = document.createElement("div");
-    nnDiv.classList = `div${i}`;
+    let libItem_Info = document.createElement("div");
+    libItem_Info.classList = `div${i}`;
     switch (i) {
       case 1:
-        nnDiv.textContent = `Title: ${myLibrary[currentBookIndex].title}`;
+        libItem_Info.textContent = `Title: ${myLibrary[currentBookIndex].title}`;
         break;
       case 2:
-        nnDiv.textContent = `Author: ${myLibrary[currentBookIndex].author}`;
+        libItem_Info.textContent = `Author: ${myLibrary[currentBookIndex].author}`;
         break;
       case 3:
-        nnDiv.textContent = `Number of Pages: ${myLibrary[currentBookIndex].pages}`;
+        libItem_Info.textContent = `Number of Pages: ${myLibrary[currentBookIndex].pages}`;
         break;
       case 4:
-        nnDiv.addEventListener("click", () => {
+        libItem_Info.addEventListener("click", () => {
           myLibrary[currentBookIndex].changeStatus();
           if (myLibrary[currentBookIndex].opt) {
-            nnDiv.style.backgroundColor = "green";
+            libItem_Info.style.backgroundColor = "green";
           } else {
-            nnDiv.style.backgroundColor = "red";
+            libItem_Info.style.backgroundColor = "red";
           }
-          nnDiv.textContent = myLibrary[currentBookIndex].haveread;
+          libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
         });
 
-        nnDiv.textContent = myLibrary[currentBookIndex].haveread;
+        libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
         if (myLibrary[currentBookIndex].opt) {
-          nnDiv.style.backgroundColor = "green";
+          libItem_Info.style.backgroundColor = "green";
         } else {
-          nnDiv.style.backgroundColor = "red";
+          libItem_Info.style.backgroundColor = "red";
         }
         break;
     }
-    nDiv.appendChild(nnDiv);
+    libItem.appendChild(libItem_Info);
   }
 }
 
