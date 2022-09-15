@@ -16,23 +16,24 @@ newBook.addEventListener("click", () => {
 });
 
 submit.addEventListener("click", (e) => {
-  e.preventDefault();
   if (ValidateAllInputs()) {
+    e.preventDefault();
     addToLibArray();
     createLibDiv();
   } else {
+    e.preventDefault();
     /* TODO- Add an element to the page that will display a warning to the user instead of
 an alert. */
     /* TODO- Add specific warnings depending on what went wrong. (Can't remember how to do 
 that exaclty. Will have to revisit the validity checking section on MDN and TOP) */
-    alert("Invalid");
+    // alert("Invalid");
   }
 });
 
 function ValidateAllInputs() {
   let Verification = true;
   allInputs.forEach((input) => {
-    if (!input.checkValidity()) {
+    if (!input.reportValidity()) {
       Verification = false;
       console.log(`${input.name} is a falsy input`);
     }
