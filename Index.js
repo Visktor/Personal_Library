@@ -30,11 +30,14 @@ that exaclty. Will have to revisit the validity checking section on MDN and TOP)
 });
 
 function ValidateAllInputs() {
-  for (i = 0; i < allInputs.length; i++) {
-    if (!checkValidity(allInputs[i])) {
-      return false;
+  let Verification = true;
+  allInputs.forEach((input) => {
+    if (!input.checkValidity()) {
+      Verification = false;
+      console.log(`${input.name} is a falsy input`);
     }
-  }
+  });
+  return Verification;
 }
 
 function addToLibArray() {
