@@ -9,7 +9,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    color:var(--DARK-RED)
+    color: var(--DARK-RED)
 }
 
 body {
@@ -35,7 +35,7 @@ form {
     padding: 20px;
 }
 
-form *{
+form * {
     color: black;
 }
 
@@ -92,7 +92,7 @@ fieldset input {
     align-content: center;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    scrollbar-base-color: var(--LIGHT-BLUE) ;
+    scrollbar-base-color: var(--LIGHT-BLUE);
     height: clamp(min-content, 400px, 50%);
     gap: 30px;
     width: 80%;
@@ -110,8 +110,8 @@ fieldset input {
     background: linear-gradient(156deg, var(--PINK) 65%, var(--PINK));
     color: var(--DARK-RED);
     border-radius: 15px;
-    padding: 20px;
-}
+    padding: 20px; 
+} 
 
 .book_div .div4 {
     color: white;

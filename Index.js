@@ -17,11 +17,32 @@ newBook.addEventListener("click", () => {
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  if (checkValid()) {
+  if (ValidateAllInputs()) {
     addToLibArray();
     createLibDiv();
+  } else {
+    /* TODO- Add an element to the page that will display a warning to the user instead of
+an alert. */
+    /* TODO- Add specific warnings depending on what went wrong. (Can't remember how to do 
+that exaclty. Will have to revisit the validity checking section on MDN and TOP) */
+    alert("Invalid");
   }
 });
+
+function ValidateAllInputs() {
+  for (i = 0; i < allInputs.length; i++) {
+    if (!checkValidity(allInputs[i])) {
+      return false;
+    }
+  }
+}
+
+function addToLibArray() {
+  currentBookIndex += 1;
+  myLibrary.push(
+    new Book(bookTitle.value, bookAuthor.value, bookPages.value, checkRadio())
+  );
+}
 
 function createLibDiv() {
   let libItem = document.createElement("div");
@@ -30,13 +51,6 @@ function createLibDiv() {
   libUI.appendChild(libItem);
   createDeleteButton(libItem);
   createInfoDivs(libItem);
-}
-
-function addToLibArray() {
-  currentBookIndex += 1;
-  myLibrary.push(
-    new Book(bookTitle.value, bookAuthor.value, bookPages.value, checkRadio())
-  );
 }
 
 function checkRadio() {
@@ -117,18 +131,6 @@ function Book(title, author, pages, haveread) {
   }
 }
 
-function checkValid() {
-  let myValidity = true;
-  allInputs.forEach((input) => {
-    if (input.checkValidity() && myValidity === true) {
-      myValidity = true;
-    } else myValidity = false;
-    return myValidity;
-  });
-  if (myValidity === true) {
-    return true;
-  } else return false;
-}
 Book.prototype.changeStatus = function () {
   if (this.haveread) {
     if (this.opt) {
