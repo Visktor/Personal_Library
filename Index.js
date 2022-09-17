@@ -68,20 +68,15 @@ function checkRadio() {
 }
 
 function createDeleteButton(libItem) {
-  console.log(currentBookIndex);
   let delButton = document.createElement("button");
-  delButton.setAttribute("data_libIndex", currentBookIndex);
-  delButton.Obj = myLibrary[currentBookIndex];
   delButton.textContent = "X";
   delButton.classList.add("delete_button");
+  delButton.Obj = myLibrary[currentBookIndex];
   libItem.appendChild(delButton);
   delButton.addEventListener("click", function () {
-    console.log(delButton.Obj);
-    console.log(delButton.Obj.counter());
     myLibrary.splice(delButton.Obj.counter(), 1);
     libItem.remove();
     currentBookIndex -= 1;
-    console.log(myLibrary);
   });
 }
 
