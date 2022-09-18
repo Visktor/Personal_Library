@@ -127,12 +127,12 @@ function Book(title, author, pages, haveread) {
 
   changeHaveRead = function () {
     changeStatus();
-    if (this.Obj.opt) {
+    if (opt) {
       this.style.backgroundColor = "var(--LIGHT-BLUE)";
     } else {
       this.style.backgroundColor = "var(--DARK-RED)";
     }
-    this.textContent = myLibrary[currentBookIndex].haveread;
+    this.textContent = myLibrary[index()].haveread;
   };
 
   index = function () {
