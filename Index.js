@@ -109,31 +109,35 @@ function createInfoDivs(libItem) {
   }
 }
 
-function changeHaveRead() {
-  this.Obj.changeStatus();
-  if (this.Obj.opt) {
-    this.style.backgroundColor = "var(--LIGHT-BLUE)";
-  } else {
-    this.style.backgroundColor = "var(--DARK-RED)";
-  }
-  this.textContent = myLibrary[currentBookIndex].haveread;
-}
-
 function Book(title, author, pages, haveread) {
+  if (haveread === "true") {
+    opt = true;
+  } else if (haveread === "false") {
+    opt = false;
+  }
   changeStatus = () => {
-    if (haveread) {
-      if (opt) {
-        haveread = "Haven't read yet";
-        opt = false;
-      } else {
-        haveread = "Already read";
-        opt = true;
-      }
+    if (haveread === "true") {
+      haveread = "Haven't read yet";
+      opt = false;
+    } else if (haveread === "false") {
+      haveread = "Already read";
+      opt = true;
     }
   };
-  return { title, author, pages, haveread, changeStatus };
-}
 
-Book.prototype.counter = function () {
-  return myLibrary.indexOf(this);
-};
+  changeHaveRead = function () {
+    changeStatus();
+    if (this.Obj.opt) {
+      this.style.backgroundColor = "var(--LIGHT-BLUE)";
+    } else {
+      this.style.backgroundColor = "var(--DARK-RED)";
+    }
+    this.textContent = myLibrary[currentBookIndex].haveread;
+  };
+
+  index = function () {
+    return myLibrary.indexOf(this);
+  };
+
+  return { title, author, pages, haveread, opt, changeStatus, index };
+}

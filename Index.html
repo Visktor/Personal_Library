@@ -1,47 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="Index.css" />
-</head>
+  <body>
+    <main>
+      <h1>Library</h1>
 
-<body>
-  <main>
-    <h1>Library</h1>
+      <form class="hide" action="">
+        <div class="input-couple">
+          <label for="book_title">Book's Title:</label>
+          <input
+            type="text"
+            id="book_title"
+            name="book_title"
+            required="required"
+            maxlength="70"
+            pattern="[a-zA-Z\d]+"
+          />
+        </div>
+        <div class="input-couple">
+          <label for="book_author">Book's Author:</label>
+          <input
+            type="text"
+            id="book_author"
+            name="book_author"
+            required="required"
+            maxlength="40"
+            pattern="[a-zA-Z]+"
+          />
+        </div>
+        <div class="input-couple">
+          <label for="number_of_pages">Number of Pages:</label>
+          <input
+            type="number"
+            max="3100"
+            id="number_of_pages"
+            name="number_of_pages"
+          />
+        </div>
+        <fieldset>
+          <legend>Have you read it?</legend>
+          <label for="have_read_yes">yes</label>
+          <input
+            type="radio"
+            required
+            id="have_read_yes"
+            name="have_read"
+            value="true"
+          />
+          <label for="have_read_no">no</label>
+          <input
+            type="radio"
+            id="have_read_no"
+            name="have_read"
+            value="false"
+          />
+        </fieldset>
+        <button class="new_book submit_button">Add Book</button>
+      </form>
 
-    <form class="hide" action="">
-      <div class="input-couple">
-        <label for="book_title">Book's Title:</label>
-        <input type="text" id="book_title" name="book_title" required="required" maxlength="70" pattern="[a-zA-Z\d]+" />
-      </div>
-      <div class="input-couple">
-        <label for="book_author">Book's Author:</label>
-        <input type="text" id="book_author" name="book_author" required="required" maxlength="40" pattern="[a-zA-Z]+" />
-      </div>
-      <div class="input-couple">
-        <label for="number_of_pages">Number of Pages:</label>
-        <input type="number" max="3100" id="number_of_pages" name="number_of_pages" />
-      </div>
-      <fieldset>
-        <legend>Have you read it?</legend>
-        <label for="have_read_yes">yes</label>
-        <input type="radio" required id="have_read_yes" name="have_read" value="Already read" />
-        <label for="have_read_no">no</label>
-        <input type="radio" id="have_read_no" name="have_read" value="Haven't read yet" />
-      </fieldset>
-      <button class="new_book submit_button">Add Book</button>
-    </form>
+      <div class="library"></div>
 
-    <div class="library"></div>
+      <footer></footer>
+    </main>
 
-    <footer></footer>
-  </main>
-
-  <script src="Index.js"></script>
-</body>
-
+    <script src="Index.js"></script>
+  </body>
 </html>
