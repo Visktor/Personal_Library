@@ -120,27 +120,19 @@ function changeHaveRead() {
 }
 
 function Book(title, author, pages, haveread) {
-  (this.title = title), (this.author = author), (this.pages = pages);
-  if (haveread === "yes") {
-    this.haveread = "Already read";
-    this.opt = true;
-  } else {
-    this.haveread = "Haven't read yet";
-    this.opt = false;
-  }
-}
-
-Book.prototype.changeStatus = function () {
-  if (this.haveread) {
-    if (this.opt) {
-      this.haveread = "Haven't read yet";
-      this.opt = false;
-    } else if (!this.opt) {
-      this.haveread = "Already read";
-      this.opt = true;
+  changeStatus = () => {
+    if (haveread) {
+      if (opt) {
+        haveread = "Haven't read yet";
+        opt = false;
+      } else {
+        haveread = "Already read";
+        opt = true;
+      }
     }
-  }
-};
+  };
+  return { title, author, pages, haveread, changeStatus };
+}
 
 Book.prototype.counter = function () {
   return myLibrary.indexOf(this);
