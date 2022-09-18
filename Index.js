@@ -96,7 +96,10 @@ function createInfoDivs(libItem) {
         break;
       case 4:
         libItem_Info.Obj = myLibrary[currentBookIndex];
-        libItem_Info.addEventListener("click", changeHaveRead);
+        libItem_Info.addEventListener(
+          "click",
+          changeHaveRead.bind(libItem_Info)
+        );
         libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
         if (myLibrary[currentBookIndex].opt) {
           libItem_Info.style.backgroundColor = "var(--LIGHT-BLUE)";
@@ -132,7 +135,7 @@ function Book(title, author, pages, haveread) {
     } else {
       this.style.backgroundColor = "var(--DARK-RED)";
     }
-    this.textContent = myLibrary[index()].haveread;
+    this.textContent = myLibrary[this.Obj.index()].haveread;
   };
 
   index = function () {
