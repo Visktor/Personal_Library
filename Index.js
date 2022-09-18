@@ -44,7 +44,7 @@ function ValidateAllInputs() {
 function addToLibArray() {
   currentBookIndex += 1;
   myLibrary.push(
-    new Book(bookTitle.value, bookAuthor.value, bookPages.value, checkRadio())
+    Book(bookTitle.value, bookAuthor.value, bookPages.value, checkRadio())
   );
 }
 
@@ -74,7 +74,7 @@ function createDeleteButton(libItem) {
   delButton.Obj = myLibrary[currentBookIndex];
   libItem.appendChild(delButton);
   delButton.addEventListener("click", function () {
-    myLibrary.splice(delButton.Obj.counter(), 1);
+    myLibrary.splice(delButton.Obj.index(), 1);
     libItem.remove();
     currentBookIndex -= 1;
   });
@@ -117,10 +117,10 @@ function Book(title, author, pages, haveread) {
   }
   changeStatus = () => {
     if (haveread === "true") {
-      haveread = "Haven't read yet";
+      haveread = "false";
       opt = false;
     } else if (haveread === "false") {
-      haveread = "Already read";
+      haveread = "false";
       opt = true;
     }
   };
