@@ -96,10 +96,10 @@ function createInfoDivs(libItem) {
         break;
       case 4:
         libItem_Info.Obj = myLibrary[currentBookIndex];
-        libItem_Info.addEventListener(
-          "click",
-          changeHaveRead.bind(libItem_Info)
-        );
+        libItem_Info.Obj.Element = libItem_Info;
+        libItem_Info.addEventListener("click", function () {
+          this.Obj.changeHaveRead();
+        });
         libItem_Info.textContent = myLibrary[currentBookIndex].haveread;
         if (myLibrary[currentBookIndex].opt) {
           libItem_Info.style.backgroundColor = "var(--LIGHT-BLUE)";
@@ -113,34 +113,44 @@ function createInfoDivs(libItem) {
 }
 
 function Book(title, author, pages, haveread) {
-  if (haveread === "true") {
+  if (haveread === "Already read") {
     opt = true;
-  } else if (haveread === "false") {
+  } else if (haveread === "Haven't read") {
     opt = false;
   }
-  changeStatus = () => {
-    if (haveread === "true") {
-      haveread = "false";
-      opt = false;
-    } else if (haveread === "false") {
-      haveread = "false";
-      opt = true;
+
+  const _changeStatus = function () {
+    console.log(this.haveread, this.opt);
+    if (this.opt === true) {
+      this.haveread = "Haven't read";
+      this.opt = false;
+    } else if (this.opt === false) {
+      this.haveread = "Already read";
+      this.opt = true;
     }
   };
 
-  changeHaveRead = function () {
-    changeStatus();
-    if (opt) {
-      this.style.backgroundColor = "var(--LIGHT-BLUE)";
+  const changeHaveRead = function () {
+    _changeStatus.call(this);
+    if (this.opt) {
+      this.Element.style.backgroundColor = "var(--LIGHT-BLUE)";
     } else {
-      this.style.backgroundColor = "var(--DARK-RED)";
+      this.Element.style.backgroundColor = "var(--DARK-RED)";
     }
-    this.textContent = myLibrary[this.Obj.index()].haveread;
+    this.Element.textContent = this.haveread;
   };
 
   index = function () {
     return myLibrary.indexOf(this);
   };
 
-  return { title, author, pages, haveread, opt, changeStatus, index };
+  return {
+    title,
+    author,
+    pages,
+    haveread,
+    opt,
+    changeHaveRead,
+    index,
+  };
 }
